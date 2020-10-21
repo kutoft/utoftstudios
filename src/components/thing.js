@@ -74,6 +74,7 @@ const Thing = ({ src, name, date, description }) => {
           }
           .container3 {
             padding: 10px;
+            font-size: 0.875rem;
           }
           .text {
             overflow: hidden;
