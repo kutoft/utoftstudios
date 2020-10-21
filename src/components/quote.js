@@ -26,7 +26,7 @@ const Quote = ({ quote }) => {
             border-bottom-width: 0;
           }
           .text {
-            color: #110730;
+            color: inherit;
             font-size: 6rem;
             max-width: 640px;
             text-align: right;

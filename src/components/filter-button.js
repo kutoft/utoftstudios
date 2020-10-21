@@ -1,44 +1,50 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const FilterButton = ({ category, isActive, handleClick }) => {
-return (
-  <>
-    <button className={`thqButton button ${isActive ? "button-active" : ""}`} onClick={() => handleClick(category)}>{category.name}</button>
-    <style jsx>
+  return (
+    <>
+      <button
+        className={`thqButton button ${isActive ? 'button-active' : ''}`}
+        onClick={() => handleClick(category)}
+      >
+        {category.name}
+      </button>
+      <style jsx>
         {`
           .button {
-            color: #110730;
+            color: inherit;
             font-size: 12px;
             font-weight: 700;
-            border-color: #110730;
+            border-color: inherit;
             border-width: 1px;
             margin-right: 10px;
             margin-bottom: 10px;
             letter-spacing: 1.25px;
             text-transform: uppercase;
+            background-color: inherit;
           }
           .button-active {
-            color: #0a8827;
+            color: #fff;
             border-color: #0a8827;
-            background-color: #ffffff;
+            background-color: #0a8827;
           }
         `}
       </style>
-  </>
+    </>
   )
 }
 
 FilterButton.defaultProps = {
-  isActive: false
+  isActive: false,
 }
 
 FilterButton.propTypes = {
   category: PropTypes.shape({
     id: PropTypes.string,
-    name: PropTypes.string
+    name: PropTypes.string,
   }),
-  isActive: PropTypes.bool
+  isActive: PropTypes.bool,
 }
 
 export default FilterButton

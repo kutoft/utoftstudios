@@ -30,7 +30,7 @@ const Thing = ({ src, name, date, description }) => {
             overflow: auto;
             position: relative;
             padding: ${isOpen ? '10px' : '0'};
-            background: ${isOpen ? '#fff' : 'none'};
+            background-color: inherit;
             border: ${isOpen ? '1px solid #dbdbdb' : 'none'};
             grid-column: ${isOpen ? '1 / span 3' : 'auto'};
           }
@@ -51,7 +51,7 @@ const Thing = ({ src, name, date, description }) => {
             display: flex;
             overflow: hidden;
             border-radius: 4px;
-            background-color: #f5f5f5;
+            background-color: inherit;
             border: 1px solid #dbdbdb;
             background-image: url(${src});
             background-position: center center;

@@ -1,15 +1,36 @@
 import React from 'react'
 
+import { useColorMode } from '../utlis/colorModeContext'
 import Link from 'next/link'
 import Button from './button'
+import Switch from './switch'
 
 const Footer = () => {
+  const { colorMode, setColorMode } = useColorMode()
+
+  const handleThemeSwitch = () => {
+    if (colorMode === 'light') {
+      setColorMode('dark')
+      return
+    }
+    setColorMode('light')
+  }
+
   return (
     <>
       <div className="container">
         <div className="space-between">
-          <div className="section section-flex-start">
+          <div className="section section-flex-end">
             <div className="wrapper">
+              <Switch
+                label={colorMode}
+                initialState={colorMode === 'light' ? false : true}
+                handleClick={handleThemeSwitch}
+              />
+            </div>
+          </div>
+          <div className="section section-flex-start">
+            <div className="wrapper small">
               <a
                 href="https://www.linkedin.com/in/kevin-utoft/"
                 target="_blank"
@@ -32,7 +53,7 @@ const Footer = () => {
                 <path d="M731.429 348.571c-21.714 9.714-44.571 16-69.143 19.429 25.143-14.857 44-38.857 53.143-66.857-23.429 13.714-49.143 24-76.571 29.143-21.714-23.429-53.143-37.714-87.429-37.714-66.286 0-120 53.714-120 120 0 9.143 0.571 18.857 2.857 27.429-100-5.143-188.571-52.571-248-125.714-10.286 17.714-16.571 38.857-16.571 60.571 0 41.714 19.429 78.286 52 100-20-0.571-38.857-6.286-57.143-14.857v1.143c0 58.286 44 106.857 98.857 117.714-10.286 2.857-18.286 4.571-29.143 4.571-7.429 0-14.857-1.143-22.286-2.286 15.429 47.429 59.429 82.286 112 83.429-41.143 32-92.571 51.429-149.143 51.429-9.714 0-19.429-0.571-28.571-1.714 53.143 33.714 116 53.714 184 53.714 220.571 0 341.714-182.857 341.714-341.714 0-5.143 0-10.286-0.571-15.429 23.429-16.571 44-37.714 60-62.286zM877.714 237.714v548.571c0 90.857-73.714 164.571-164.571 164.571h-548.571c-90.857 0-164.571-73.714-164.571-164.571v-548.571c0-90.857 73.714-164.571 164.571-164.571h548.571c90.857 0 164.571 73.714 164.571 164.571z"></path>
               </svg>
             </div> */}
-            <div className="wrapper">
+            <div className="wrapper small">
               <a href="https://github.com/kutoft" target="_blank">
                 <svg
                   viewBox="0 0 877.7142857142857 1024"
@@ -45,8 +66,10 @@ const Footer = () => {
             </div>
           </div>
           <div className="section section-flex-end">
-            <div className="wrapper">
-              <Link href="/admin">Login</Link>
+            <div className="wrapper login">
+              <Link href="/admin">
+                <a>Login</a>
+              </Link>
             </div>
           </div>
         </div>
@@ -58,7 +81,6 @@ const Footer = () => {
             display: flex;
             overflow: auto;
             flex-wrap: wrap;
-            margin-top: 20px;
             align-items: center;
             flex-direction: row;
             justify-content: center;
@@ -104,10 +126,17 @@ const Footer = () => {
             flex-direction: row;
             justify-content: flex-start;
           }
+          .wrapper.small {
+            padding: 10px;
+          }
           .icon {
             fill: #ffffff;
             width: 24px;
             height: 24px;
+          }
+          .login {
+            text-transform: uppercase;
+            color: #fff;
           }
         `}
       </style>

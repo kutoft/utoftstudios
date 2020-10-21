@@ -26,7 +26,7 @@ const Title = (props) => {
             border-bottom-width: 0;
           }
           .text {
-            color: #110730;
+            color: inherit;
             font-size: 3rem;
             font-weight: 900;
             line-height: 1;
