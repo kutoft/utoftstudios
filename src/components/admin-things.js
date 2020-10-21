@@ -52,7 +52,23 @@ const AdminThings = () => {
 
   return (
     <>
-      <SubTitle title="Thing"></SubTitle>
+      <SubTitle title="Thing">
+        <Button
+          label="Add"
+          handleClick={() =>
+            handleEdit(
+              {
+                id: nextId,
+                name: '',
+                src: '',
+                description: '',
+                categoryID: '',
+              },
+              'create'
+            )
+          }
+        />
+      </SubTitle>
       <FormGroup>
         {data &&
           data.data.listThings.items.map((item) => (

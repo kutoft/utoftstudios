@@ -59,7 +59,20 @@ const AdminQuote = () => {
 
   return (
     <>
-      <SubTitle title="Quote"></SubTitle>
+      <SubTitle title="Quote">
+        <Button
+          label="Add"
+          handleClick={() =>
+            handleEdit(
+              {
+                id: nextId,
+                value: '',
+              },
+              'create'
+            )
+          }
+        />
+      </SubTitle>
       <FormGroup>
         <Drag handleOrderChange={handleOrderChange}>
           {data &&

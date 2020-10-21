@@ -2,11 +2,12 @@ import React from 'react'
 
 import PropTypes from 'prop-types'
 
-const SubTitle = (props) => {
+const SubTitle = ({ title, children }) => {
   return (
     <>
       <div className="container">
-        <h1 className="thqHeading1 text">{props.title}</h1>
+        <h1 className="thqHeading1 text">{title}</h1>
+        {children}
       </div>
       <style jsx>
         {`
@@ -22,7 +23,7 @@ const SubTitle = (props) => {
             padding-right: 20px;
             flex-direction: row;
             padding-bottom: 20px;
-            justify-content: flex-start;
+            justify-content: space-between;
             border-bottom-width: 0;
           }
           .text {

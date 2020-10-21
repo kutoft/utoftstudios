@@ -65,7 +65,20 @@ const AdminDescriptions = () => {
 
   return (
     <>
-      <SubTitle title="Description"></SubTitle>
+      <SubTitle title="Description">
+        <Button
+          label="Add"
+          handleClick={() =>
+            handleEdit(
+              {
+                id: nextId,
+                value: '',
+              },
+              'create'
+            )
+          }
+        />
+      </SubTitle>
       <FormGroup>
         <Drag handleOrderChange={handleOrderChange}>
           {data &&

@@ -55,7 +55,7 @@ const Filter = ({ category, serverCategorys, handleCategoryChange }) => {
 
 Filter.propTypes = {
   category: PropTypes.string,
-  serverCategorys: PropTypes.array,
+  serverCategorys: PropTypes.object,
   handleCategoryChange: PropTypes.func,
 }
 

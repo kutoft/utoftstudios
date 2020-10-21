@@ -11,7 +11,9 @@ const Header = () => {
         <div className="container1">
           <div className="container2">
             <Link href="/">
-              <img src="/static/utoft_logo.png" className="thqImage image" />
+              <a>
+                <img src="/static/utoft_logo.png" className="thqImage image" />
+              </a>
             </Link>
           </div>
           {router.pathname !== '/admin' && (
@@ -54,7 +56,7 @@ const Header = () => {
             align-items: center;
             flex-direction: row;
             justify-content: center;
-            background-color: #110730;
+            background-color: #130930;
           }
           .container1 {
             width: 100%;
@@ -87,18 +89,16 @@ const Header = () => {
           }
           .link {
             color: #ffffff;
+            font-size: 1rem;
             font-weight: 900;
-            padding-top: 10px;
-            padding-left: 20px;
-            padding-right: 20px;
+            padding: 5px 15px;
             letter-spacing: 1.5px;
-            padding-bottom: 10px;
             text-transform: uppercase;
-            border-bottom-width: 3px;
+            border-bottom-width: 6px;
             border-color: transparent;
           }
           .link-active {
-            border-color: #fff;
+            border-color: #0a8827;
           }
           @media (max-width: 479px) {
             .container {
@@ -112,6 +112,9 @@ const Header = () => {
               font-size: 12px;
               padding-left: 10px;
               padding-right: 10px;
+            }
+            .link {
+              font-size: 0.87rem;
             }
           }
         `}

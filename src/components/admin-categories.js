@@ -65,7 +65,20 @@ const AdminCategories = () => {
 
   return (
     <>
-      <SubTitle title="Category"></SubTitle>
+      <SubTitle title="Category">
+        <Button
+          label="Add"
+          handleClick={() =>
+            handleEdit(
+              {
+                id: nextId,
+                name: '',
+              },
+              'create'
+            )
+          }
+        />
+      </SubTitle>
       <FormGroup>
         <Drag handleOrderChange={handleOrderChange}>
           {data &&
