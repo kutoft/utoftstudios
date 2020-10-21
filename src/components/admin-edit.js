@@ -76,7 +76,7 @@ const AdminEdit = ({ handleClose, handleSave, saveLabel, children }) => {
           }
           .fields :global(textarea) {
             width: 100%;
-            height: 200px;
+            height: 400px;
             display: block;
             padding: 20px;
             border-color: #dbdbdb;

@@ -13,15 +13,13 @@ import AdminQuotes from '../components/admin-quotes'
 import AdminDescriptions from '../components/admin-Descriptions'
 
 const Admin = () => {
-  const [authState, setAuthState] = React.useState()
+  const [authState, setAuthState] = React.useState(AuthState.SignIn)
   const [user, setUser] = React.useState()
 
-  React.useEffect(() => {
-    return onAuthUIStateChange((nextAuthState, authData) => {
-      setAuthState(nextAuthState)
-      setUser(authData)
-    })
-  }, [])
+  const onAuthUIStateChange = (nextAuthState, authData) => {
+    setAuthState(nextAuthState)
+    setUser(authData)
+  }
 
   return authState === AuthState.SignedIn && user ? (
     <>
@@ -83,7 +81,7 @@ const Admin = () => {
   ) : (
     <>
       <div className="container">
-        <AmplifyAuthenticator>
+        <AmplifyAuthenticator handleAuthStateChange={onAuthUIStateChange}>
           <AmplifySignIn hideSignUp={true} slot="sign-in" />
         </AmplifyAuthenticator>
       </div>
