@@ -1,0 +1,26 @@
+{
+  "name": "kevinutoft",
+  "version": "1.0.0",
+  "description": "A next project generated based on a UIDL document",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build && next export",
+    "start": "next start",
+    "export": "next export"
+  },
+  "author": "TeleportHQ",
+  "license": "MIT",
+  "dependencies": {
+    "@aws-amplify/ui-react": "^0.2.21",
+    "aws-amplify": "3.3.3",
+    "next": "^9.3.1",
+    "next-pwa": "^3.1.5",
+    "prop-types": "15.7.2",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.1.2"
+  }
+}

@@ -1,0 +1,24 @@
+type Category @model {
+  id: ID!
+  name: String!
+  things: [Thing] @connection(keyName: "byCategory", fields: ["id"])
+}
+
+type Thing @model @key(name: "byCategory", fields: ["categoryID"]) {
+  id: ID!
+  name: String!
+  src: String!
+  description: String
+  categoryID: ID!
+  category: Category @connection(fields: ["categoryID"])
+}
+
+type Quote @model {
+  id: ID!
+  value: String!
+}
+
+type Description @model {
+  id: ID!
+  value: String!
+}

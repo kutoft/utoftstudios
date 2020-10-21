@@ -1,0 +1,21 @@
+{
+    "appName": "utoftstudios",
+    "roleName": "pinpointLambdaRole18fc57f7",
+    "cloudformationPolicyName": "cloudformationPolicy18fc57f7",
+    "cloudWatchPolicyName": "cloudWatchPolicy18fc57f7",
+    "pinpointPolicyName": "pinpointPolicy18fc57f7",
+    "authPolicyName": "pinpoint_amplify_18fc57f7",
+    "unauthPolicyName": "pinpoint_amplify_18fc57f7",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    }
+}
