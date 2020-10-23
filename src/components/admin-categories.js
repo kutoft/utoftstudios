@@ -8,6 +8,7 @@ import {
 
 import useCRUD from '../utlis/useCRUD'
 import useNextId from '../utlis/useNextId'
+import { useColorMode } from '../utlis/colorModeContext'
 
 import Button from './button'
 import CtaWrapper from './cta-wrapper'
@@ -20,6 +21,7 @@ import DragZone from './drag-zone'
 import DragItem from './drag-item'
 
 const AdminCategories = () => {
+  const { colorMode } = useColorMode()
   const {
     state,
     data,
@@ -68,6 +70,7 @@ const AdminCategories = () => {
       <SubTitle title="Category">
         <Button
           label="Add"
+          options={{ color: colorMode === 'light' ? 'dark' : 'light' }}
           handleClick={() =>
             handleEdit(
               {
@@ -117,7 +120,10 @@ const AdminCategories = () => {
         <CtaWrapper>
           <Button
             label="Add Category"
-            options={{ fullWidth: true }}
+            options={{
+              fullWidth: true,
+              color: colorMode === 'light' ? 'dark' : 'light',
+            }}
             handleClick={() =>
               handleEdit(
                 {

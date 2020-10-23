@@ -10,8 +10,12 @@ const Main = ({ children }) => {
       <style jsx>
         {`
           :global(body) {
-            color: ${colorMode === 'light' ? '#070217' : '#f5f5f5'};
-            background-color: ${colorMode === 'light' ? '#f5f5f5' : '#070217'};
+            color: ${colorMode === 'light'
+              ? 'var(--dark-primary)'
+              : 'var(--light-primary)'};
+            background-color: ${colorMode === 'light'
+              ? 'var(--light-primary)'
+              : 'var(--dark-primary)'};
           }
           .main {
             width: 100%;

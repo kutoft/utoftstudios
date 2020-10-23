@@ -4,6 +4,7 @@ import { createQuote, updateQuote, deleteQuote } from '../graphql/mutations'
 
 import useCRUD from '../utlis/useCRUD'
 import useNextId from '../utlis/useNextId'
+import { useColorMode } from '../utlis/colorModeContext'
 
 import Button from './button'
 import CtaWrapper from './cta-wrapper'
@@ -16,6 +17,8 @@ import DragZone from './drag-zone'
 import DragItem from './drag-item'
 
 const AdminQuote = () => {
+  const { colorMode } = useColorMode()
+
   const {
     state,
     data,
@@ -62,6 +65,7 @@ const AdminQuote = () => {
       <SubTitle title="Quote">
         <Button
           label="Add"
+          options={{ color: colorMode === 'light' ? 'dark' : 'light' }}
           handleClick={() =>
             handleEdit(
               {
@@ -110,7 +114,10 @@ const AdminQuote = () => {
         <CtaWrapper>
           <Button
             label="Add Quote"
-            options={{ fullWidth: true }}
+            options={{
+              fullWidth: true,
+              color: colorMode === 'light' ? 'dark' : 'light',
+            }}
             handleClick={() =>
               handleEdit(
                 {

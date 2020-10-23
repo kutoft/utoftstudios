@@ -6,6 +6,7 @@ import { createThing, updateThing, deleteThing } from '../graphql/mutations'
 import useAsync from '../utlis/useAsync'
 import useCRUD from '../utlis/useCRUD'
 import useNextId from '../utlis/useNextId'
+import { useColorMode } from '../utlis/colorModeContext'
 
 import Button from './button'
 import CtaWrapper from './cta-wrapper'
@@ -16,6 +17,8 @@ import AdminEdit from './admin-edit'
 import DragItem from './drag-item'
 
 const AdminThings = () => {
+  const { colorMode } = useColorMode()
+
   const {
     state,
     data,
@@ -55,6 +58,7 @@ const AdminThings = () => {
       <SubTitle title="Thing">
         <Button
           label="Add"
+          options={{ color: colorMode === 'light' ? 'dark' : 'light' }}
           handleClick={() =>
             handleEdit(
               {
@@ -147,7 +151,10 @@ const AdminThings = () => {
         <CtaWrapper>
           <Button
             label="Add Thing"
-            options={{ fullWidth: true }}
+            options={{
+              fullWidth: true,
+              color: colorMode === 'light' ? 'dark' : 'light',
+            }}
             handleClick={() =>
               handleEdit(
                 {

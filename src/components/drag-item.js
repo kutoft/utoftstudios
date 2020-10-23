@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Button from './button'
+import { useColorMode } from '../utlis/colorModeContext'
 
 const DragItem = ({
   draggable,
@@ -11,6 +12,8 @@ const DragItem = ({
   handleEdit,
   handleDelete,
 }) => {
+  const { colorMode } = useColorMode()
+
   return (
     <>
       <div className="drag-item container" draggable={draggable} id={item.id}>
@@ -59,9 +62,14 @@ const DragItem = ({
             align-items: center;
             flex-direction: row;
             justify-content: flex-start;
-            background-color: #ffffff;
+            background-color: ${colorMode === 'light'
+              ? 'var(--light-tint)'
+              : 'var(--dark-tint)'};
             padding: ${draggable ? '0' : '10px'};
-            border: ${draggable ? 'none' : '1px solid #dbdbdb'};
+            border: ${draggable ? 'none' : '1px solid'};
+            border-color: ${colorMode === 'light'
+              ? 'var(--light-shade)'
+              : 'var(--dark-shade)'};
           }
           .dragable {
             display: flex;
@@ -80,11 +88,15 @@ const DragItem = ({
           .container-image {
             width: 50px;
             height: 50px;
+            flex-shrink: 0;
             margin: 0 10px;
             overflow: hidden;
             border-radius: 50%;
             background-color: rgba(120, 120, 120, 0.4);
-            border: 1px solid #dbdbdb;
+            border: 1px solid;
+            border-color: ${colorMode === 'light'
+              ? 'var(--light-shade)'
+              : 'var(--dark-shade)'};
             background-image: url(${src});
             background-position: center center;
             background-size: cover;

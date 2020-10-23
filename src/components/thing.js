@@ -1,9 +1,11 @@
 import React from 'react'
-
 import PropTypes from 'prop-types'
+
+import { useColorMode } from '../utlis/colorModeContext'
 
 const Thing = ({ src, name, date, description }) => {
   const [isOpen, setIsOpen] = React.useState(false)
+  const { colorMode } = useColorMode()
 
   const handleClick = () => {
     setIsOpen((o) => !o)
@@ -31,7 +33,8 @@ const Thing = ({ src, name, date, description }) => {
             position: relative;
             padding: ${isOpen ? '10px' : '0'};
             background-color: inherit;
-            border: ${isOpen ? '1px solid #dbdbdb' : 'none'};
+            border: ${isOpen ? '1px solid' : 'none'};
+            border-color: ${colorMode === 'light' ? '#dbdbdb' : '#dbdbdb'};
             grid-column: ${isOpen ? '1 / span 3' : 'auto'};
           }
           @media (max-width: 767px) {
@@ -52,7 +55,8 @@ const Thing = ({ src, name, date, description }) => {
             overflow: hidden;
             border-radius: 4px;
             background-color: inherit;
-            border: 1px solid #dbdbdb;
+            border: 1px solid;
+            border-color: ${colorMode === 'light' ? '#dbdbdb' : '#dbdbdb'};
             background-image: url(${src});
             background-position: center center;
             background-repeat: no-repeat;

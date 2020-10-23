@@ -5,6 +5,13 @@
   --amplify-secondary-color: #130930;
   --amplify-secondary-tint: #1d0c4e;
   --amplify-secondary-shade: #0a041d;
+
+  --light-primary: #f5f5f5;
+  --light-tint: #fff;
+  --light-shade: #dbdbdb;
+  --dark-primary: #0a041d;
+  --dark-tint: #130930;
+  --dark-shade: #04010f;
 }
 
 .thqLink {

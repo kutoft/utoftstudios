@@ -1,6 +1,10 @@
 import React from 'react'
 
+import { useColorMode } from '../utlis/colorModeContext'
+
 function DragZone({ children }) {
+  const { colorMode } = useColorMode()
+
   const dragOver = (event) => {
     // prevent default to allow drop
     event.preventDefault()
@@ -43,9 +47,13 @@ function DragZone({ children }) {
           .drag-zone {
             width: 100%;
             padding: 10px;
-            border-color: #dbdbdb;
+            border-color: ${colorMode === 'light'
+              ? 'var(--light-shade)'
+              : 'var(--dark-shade)'};
             border-width: 1px;
-            background-color: #ffffff;
+            background-color: ${colorMode === 'light'
+              ? 'var(--light-tint)'
+              : 'var(--dark-tint)'};
           }
         `}
       </style>

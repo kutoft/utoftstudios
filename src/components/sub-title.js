@@ -1,8 +1,11 @@
 import React from 'react'
-
 import PropTypes from 'prop-types'
 
+import { useColorMode } from '../utlis/colorModeContext'
+
 const SubTitle = ({ title, children }) => {
+  const { colorMode } = useColorMode()
+
   return (
     <>
       <div className="container">
@@ -27,7 +30,7 @@ const SubTitle = ({ title, children }) => {
             border-bottom-width: 0;
           }
           .text {
-            color: #110730;
+            color: ${colorMode === 'light' ? '#110730' : '#f5f5f5'};
             font-size: 1.5rem;
             font-weight: 900;
             padding-top: 0;

@@ -2,8 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Button from './button'
+import { useColorMode } from '../utlis/colorModeContext'
 
 const AdminEdit = ({ handleClose, handleSave, saveLabel, children }) => {
+  const { colorMode } = useColorMode()
   return (
     <>
       <div className="edit">
@@ -17,7 +19,11 @@ const AdminEdit = ({ handleClose, handleSave, saveLabel, children }) => {
               color: 'secondary',
             }}
           />
-          <Button label={saveLabel} handleClick={handleSave} />
+          <Button
+            label={saveLabel}
+            options={{ color: colorMode === 'light' ? 'dark' : 'light' }}
+            handleClick={handleSave}
+          />
         </div>
       </div>
       <style jsx>
@@ -31,7 +37,9 @@ const AdminEdit = ({ handleClose, handleSave, saveLabel, children }) => {
             margin-bottom: 30px;
           }
           .fields {
-            color: #2b2b2b;
+            color: ${colorMode === 'light'
+              ? 'var(--dark-primary)'
+              : 'var(--light-primary)'};
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -45,6 +53,9 @@ const AdminEdit = ({ handleClose, handleSave, saveLabel, children }) => {
             margin-bottom: 3px;
             letter-spacing: 1.25px;
             text-transform: uppercase;
+            color: ${colorMode === 'light'
+              ? 'var(--dark-primary)'
+              : 'var(--light-primary)'};
           }
           .fields :global(input) {
             display: block;
@@ -53,6 +64,12 @@ const AdminEdit = ({ handleClose, handleSave, saveLabel, children }) => {
             border-width: 1px;
             flex-grow: 1;
             line-height: 1.5;
+            color: ${colorMode === 'light'
+              ? 'var(--dark-primary)'
+              : 'var(--light-primary)'};
+            background-color: ${colorMode === 'light'
+              ? 'var(--light-tint)'
+              : 'var(--dark-tint)'};
           }
           .fields :global(select) {
             display: block;
@@ -61,6 +78,12 @@ const AdminEdit = ({ handleClose, handleSave, saveLabel, children }) => {
             border-width: 1px;
             flex-grow: 1;
             line-height: 1.5;
+            color: ${colorMode === 'light'
+              ? 'var(--dark-primary)'
+              : 'var(--light-primary)'};
+            background-color: ${colorMode === 'light'
+              ? 'var(--light-tint)'
+              : 'var(--dark-tint)'};
             background-image: linear-gradient(
                 45deg,
                 transparent 50%,
@@ -79,8 +102,16 @@ const AdminEdit = ({ handleClose, handleSave, saveLabel, children }) => {
             height: 400px;
             display: block;
             padding: 20px;
-            border-color: #dbdbdb;
+            color: ${colorMode === 'light'
+              ? 'var(--dark-primary)'
+              : 'var(--light-primary)'};
+            border-color: ${colorMode === 'light'
+              ? 'var(--light-shade)'
+              : 'var(--dark-shade)'};
             border-width: 1px;
+            background-color: ${colorMode === 'light'
+              ? 'var(--light-tint)'
+              : 'var(--dark-tint)'};
           }
           .actions {
             padding: 10px 0;
