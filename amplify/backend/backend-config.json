@@ -1,65 +1,65 @@
 {
-    "api": {
-        "utoftstudios": {
-            "service": "AppSync",
-            "providerPlugin": "awscloudformation",
-            "output": {
-                "authConfig": {
-                    "defaultAuthentication": {
-                        "authenticationType": "API_KEY",
-                        "apiKeyConfig": {
-                            "apiKeyExpirationDays": 7,
-                            "description": "dev"
-                        }
-                    },
-                    "additionalAuthenticationProviders": []
-                }
+  "api": {
+    "utoftstudios": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 7,
+              "description": ""
             }
+          },
+          "additionalAuthenticationProviders": []
         }
-    },
-    "auth": {
-        "utoftstudios8a670411": {
-            "service": "Cognito",
-            "providerPlugin": "awscloudformation",
-            "dependsOn": [],
-            "customAuth": false
-        }
-    },
-    "function": {
-        "S3Trigger45f892ad": {
-            "service": "Lambda",
-            "providerPlugin": "awscloudformation",
-            "build": true
-        }
-    },
-    "storage": {
-        "s3c5e2e445": {
-            "service": "S3",
-            "providerPlugin": "awscloudformation",
-            "dependsOn": [
-                {
-                    "category": "function",
-                    "resourceName": "S3Trigger45f892ad",
-                    "attributes": [
-                        "Name",
-                        "Arn",
-                        "LambdaExecutionRole"
-                    ]
-                }
-            ]
-        }
-    },
-    "analytics": {
-        "utoftstudios": {
-            "service": "Pinpoint",
-            "providerPlugin": "awscloudformation"
-        }
-    },
-    "hosting": {
-        "amplifyhosting": {
-            "service": "amplifyhosting",
-            "providerPlugin": "awscloudformation",
-            "type": "manual"
-        }
+      }
     }
+  },
+  "auth": {
+    "utoftstudios8a670411": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  },
+  "function": {
+    "S3Trigger45f892ad": {
+      "service": "Lambda",
+      "providerPlugin": "awscloudformation",
+      "build": true
+    }
+  },
+  "storage": {
+    "s3c5e2e445": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "S3Trigger45f892ad",
+          "attributes": [
+            "Name",
+            "Arn",
+            "LambdaExecutionRole"
+          ]
+        }
+      ]
+    }
+  },
+  "analytics": {
+    "utoftstudios": {
+      "service": "Pinpoint",
+      "providerPlugin": "awscloudformation"
+    }
+  },
+  "hosting": {
+    "amplifyhosting": {
+      "service": "amplifyhosting",
+      "providerPlugin": "awscloudformation",
+      "type": "manual"
+    }
+  }
 }

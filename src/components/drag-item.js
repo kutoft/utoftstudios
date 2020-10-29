@@ -80,7 +80,7 @@ const DragItem = ({
             justify-content: flex-start;
           }
           .icon {
-            fill: #dbdbdb;
+            fill: var(--light-shade);
             width: 24px;
             height: 24px;
             padding: 1px;

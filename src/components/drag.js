@@ -1,6 +1,10 @@
 import React from 'react'
 
+import { useColorMode } from '../utlis/colorModeContext'
+
 function Drag({ handleOrderChange, children }) {
+  const { colorMode } = useColorMode()
+
   const dragOver = (event) => {
     // prevent default to allow drop
     event.preventDefault()
@@ -10,7 +14,8 @@ function Drag({ handleOrderChange, children }) {
   const dragEnter = (event) => {
     // highlight potential drop target when the draggable element enters it
     if (event.target.classList.contains('drag-zone')) {
-      event.target.style.background = '#dbdbdb'
+      event.target.style.background =
+        colorMode === 'light' ? 'var(--light-shade)' : 'var(--dark-shade)'
     }
   }
   const dragLeave = (event) => {

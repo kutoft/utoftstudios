@@ -36,7 +36,7 @@ const Switch = ({ label, initialState = false, handleClick, children }) => {
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: #ccc;
+            background-color: var(--light-shade);
             -webkit-transition: 0.4s;
             transition: 0.4s;
           }
@@ -48,17 +48,17 @@ const Switch = ({ label, initialState = false, handleClick, children }) => {
             width: 26px;
             left: 4px;
             bottom: 4px;
-            background-color: white;
+            background-color: var(--light-tint);
             -webkit-transition: 0.4s;
             transition: 0.4s;
           }
 
           input:checked + .slider {
-            background-color: #0a8827;
+            background-color: var(--amplify-primary-color);
           }
 
           input:focus + .slider {
-            box-shadow: 0 0 1px #0a8827;
+            box-shadow: 0 0 1px var(--amplify-primary-color);
           }
 
           input:checked + .slider:before {
@@ -76,7 +76,7 @@ const Switch = ({ label, initialState = false, handleClick, children }) => {
           }
           .label {
             text-transform: uppercase;
-            color: #fff;
+            color: var(--light-tint);
             margin-left: 10px;
           }
         `}

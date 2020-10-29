@@ -34,7 +34,9 @@ const Thing = ({ src, name, date, description }) => {
             padding: ${isOpen ? '10px' : '0'};
             background-color: inherit;
             border: ${isOpen ? '1px solid' : 'none'};
-            border-color: ${colorMode === 'light' ? '#dbdbdb' : '#dbdbdb'};
+            border-color: ${colorMode === 'light'
+              ? 'var(--light-shade)'
+              : 'var(--dark-shade)'};
             grid-column: ${isOpen ? '1 / span 3' : 'auto'};
           }
           @media (max-width: 767px) {
@@ -56,7 +58,9 @@ const Thing = ({ src, name, date, description }) => {
             border-radius: 4px;
             background-color: inherit;
             border: 1px solid;
-            border-color: ${colorMode === 'light' ? '#dbdbdb' : '#dbdbdb'};
+            border-color: ${colorMode === 'light'
+              ? 'var(--light-shade)'
+              : 'var(--dark-shade)'};
             background-image: url(${src});
             background-position: center center;
             background-repeat: no-repeat;

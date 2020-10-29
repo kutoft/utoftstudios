@@ -30,11 +30,13 @@ const SubTitle = ({ title, children }) => {
             border-bottom-width: 0;
           }
           .text {
-            color: ${colorMode === 'light' ? '#110730' : '#f5f5f5'};
+            color: ${colorMode === 'light'
+              ? 'var(--dark-primary)'
+              : 'var(--light-prmimary)'};
             font-size: 1.5rem;
             font-weight: 900;
             padding-top: 0;
-            border-color: #0a8827;
+            border-color: var(--amplify-primary-color);
             padding-left: 5px;
             padding-right: 40px;
             padding-bottom: 0;

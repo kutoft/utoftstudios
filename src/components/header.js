@@ -56,7 +56,7 @@ const Header = () => {
             align-items: center;
             flex-direction: row;
             justify-content: center;
-            background-color: #130930;
+            background-color: var(--dark-primary);
           }
           .container1 {
             width: 100%;
@@ -88,7 +88,7 @@ const Header = () => {
             justify-content: flex-end;
           }
           .link {
-            color: #ffffff;
+            color: var(--light-tint));
             font-size: 1rem;
             font-weight: 900;
             padding: 5px 15px;
@@ -98,7 +98,7 @@ const Header = () => {
             border-color: transparent;
           }
           .link-active {
-            border-color: #0a8827;
+            border-color: var(--amplify-primary-color);
           }
           @media (max-width: 479px) {
             .container {

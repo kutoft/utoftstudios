@@ -84,7 +84,7 @@ const Footer = () => {
             align-items: center;
             flex-direction: row;
             justify-content: center;
-            background-color: #110730;
+            background-color: var(--dark-primary);
           }
           .space-between {
             width: 100%;
@@ -107,17 +107,6 @@ const Footer = () => {
           .section-flex-end {
             justify-content: flex-end;
           }
-          .button {
-            color: #ffffff;
-            width: 100%;
-            display: block;
-            padding: 10px;
-            align-self: center;
-            text-align: center;
-            border-color: transparent;
-            border-width: 0;
-            background-color: #130930;
-          }
           .wrapper {
             display: flex;
             padding: 20px;
@@ -130,13 +119,13 @@ const Footer = () => {
             padding: 10px;
           }
           .icon {
-            fill: #ffffff;
+            fill: var(--light-tint);
             width: 24px;
             height: 24px;
           }
           .login {
             text-transform: uppercase;
-            color: #fff;
+            color: var(--light-tint);
           }
         `}
       </style>

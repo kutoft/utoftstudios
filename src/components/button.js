@@ -10,7 +10,7 @@ const defaultOptions = {
   size: 'medium',
 }
 
-const Button = ({ label, handleClick, options, children }) => {
+const Button = ({ label, className, handleClick, options, children }) => {
   const { colorMode } = useColorMode()
 
   const { fullWidth, variant, color, size } = {
@@ -18,7 +18,7 @@ const Button = ({ label, handleClick, options, children }) => {
     ...options,
   }
 
-  const getColor = () => {
+  const getTextColor = () => {
     if (variant === 'outline') {
       if (colorMode === 'light') {
         return 'var(--dark-tint)'
@@ -69,11 +69,67 @@ const Button = ({ label, handleClick, options, children }) => {
     }
     return 'var(--light-tint)'
   }
+
+  const getBorderColor = () => {
+    if (variant === 'outline') {
+      if (colorMode === 'light') {
+        return 'var(--dark-tint)'
+      }
+      if (colorMode === 'dark') {
+        return 'var(--light-tint)'
+      }
+    }
+    if (variant !== 'outline') {
+      if (color === 'primary') {
+        return 'var(--amplify-primary-color)'
+      }
+      if (color === 'secondary') {
+        return 'var(--amplify-secondary-color)'
+      }
+      if (color === 'light') {
+        return 'var(--light-tint)'
+      }
+      if (color === 'dark') {
+        return 'var(--dark-tint)'
+      }
+    }
+    return 'var(--light-tint)'
+  }
+
+  const [textColor, setTextColor] = React.useState(() => getTextColor())
+  const [borderColor, setBorderColor] = React.useState(() => getBorderColor())
+  const [backgroundColor, setBackgroundColor] = React.useState(() =>
+    getBackgroundColor()
+  )
+
+  React.useEffect(() => {
+    setTextColor(getTextColor())
+    setBorderColor(getBorderColor())
+    setBackgroundColor(getBackgroundColor())
+  }, [colorMode, color, variant])
+
+  // console.log({ textColor })
+
   return (
     <>
-      <button className="thqButton button" onClick={() => handleClick()}>
+      <button
+        className={`thqButton button ${className}`}
+        onClick={() => handleClick()}
+      >
         {label ? label : children}
       </button>
+      <style jsx>
+        {`
+          .button {
+            display: block;
+            padding: 10px;
+            align-self: center;
+            text-align: center;
+            border-width: 1px;
+            text-transform: uppercase;
+          }
+        `}
+      </style>
       <style jsx>
         {`
           .button {
@@ -82,31 +138,21 @@ const Button = ({ label, handleClick, options, children }) => {
               : size === 'large'
               ? '1rem'
               : '0.875rem'};
-            color: ${getColor()};
+            color: ${textColor};
             width: ${fullWidth ? '100%' : 'auto'};
-            display: block;
-            padding: 10px;
-            align-self: center;
-            text-align: center;
-            border-color: ${variant === 'outline'
-              ? color === 'secondary'
-                ? '#0a8827'
-                : '#130930'
-              : 'transparent'};
-            border-width: ${variant === 'outline' ? '1px' : '0'};
-            background-color: ${getBackgroundColor()};
-            text-transform: uppercase;
+            border-color: ${borderColor};
+            background-color: ${backgroundColor};
           }
         `}
       </style>
     </>
   )
 }
-Button.defaultProps = defaultOptions
 
 Button.propTypes = {
   label: PropTypes.string,
   handleClick: PropTypes.func,
+  className: PropTypes.string,
   options: PropTypes.shape({
     fullWidth: PropTypes.bool,
     variant: PropTypes.oneOf(['contained', 'outline']),

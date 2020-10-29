@@ -34,7 +34,6 @@ const Quote = ({ quote }) => {
             line-height: 0.6;
             margin-left: 0;
             padding-top: 0;
-            border-color: #0a8827;
             padding-left: 0;
             padding-right: 0;
             padding-bottom: 0;

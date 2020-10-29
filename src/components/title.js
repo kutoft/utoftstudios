@@ -45,7 +45,7 @@ const Title = (props) => {
             left: 0;
             width: 100%;
             height: 20px;
-            background-color: #0a8827;
+            background-color: var(--amplify-primary-color);
             z-index: -1;
           }
           @media (max-width: 479px) {

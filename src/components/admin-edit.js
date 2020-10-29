@@ -60,7 +60,7 @@ const AdminEdit = ({ handleClose, handleSave, saveLabel, children }) => {
           .fields :global(input) {
             display: block;
             padding: 9px;
-            border-color: #dbdbdb;
+            border-color: var(--light-shade);
             border-width: 1px;
             flex-grow: 1;
             line-height: 1.5;
@@ -74,7 +74,7 @@ const AdminEdit = ({ handleClose, handleSave, saveLabel, children }) => {
           .fields :global(select) {
             display: block;
             padding: 9px;
-            border-color: #dbdbdb;
+            border-color: var(--light-shade);
             border-width: 1px;
             flex-grow: 1;
             line-height: 1.5;
@@ -87,10 +87,10 @@ const AdminEdit = ({ handleClose, handleSave, saveLabel, children }) => {
             background-image: linear-gradient(
                 45deg,
                 transparent 50%,
-                #2b2b2b 50%
+                var(--dark-tint) 50%
               ),
-              linear-gradient(135deg, #2b2b2b 50%, transparent 50%),
-              linear-gradient(to right, #dbdbdb, #dbdbdb);
+              linear-gradient(135deg, var(--dark-tint) 50%, transparent 50%),
+              linear-gradient(to right, var(--light-shade), var(--light-shade));
             background-position: calc(100% - 20px) calc(1rem + 4px),
               calc(100% - 15px) calc(1rem + 4px), calc(100% - 2.5rem);
             background-size: 5px 5px, 5px 5px, 1px 1.5rem;

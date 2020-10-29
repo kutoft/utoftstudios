@@ -24,7 +24,7 @@ const Modal = ({ isOpen, children }) => {
             height: 100vh;
             z-index: 1000;
             padding: 30px;
-            border-color: #dbdbdb;
+            border-color: var(--light-shade);
             border-width: 1px;
             background-color: ${colorMode === 'light'
               ? 'var(--light-primary)'
