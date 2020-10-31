@@ -2,9 +2,11 @@ import React from 'react'
 import { AmplifySignOut } from '@aws-amplify/ui-react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useColorMode } from '../utlis/colorModeContext'
 
 const Header = () => {
   const router = useRouter()
+  const { colorMode } = useColorMode()
   return (
     <>
       <div className="container">
@@ -56,7 +58,9 @@ const Header = () => {
             align-items: center;
             flex-direction: row;
             justify-content: center;
-            background-color: var(--dark-primary);
+            background-color: ${colorMode === 'light'
+              ? 'var(--dark-primary)'
+              : 'var(--dark-shade)'};
           }
           .container1 {
             width: 100%;
@@ -88,7 +92,7 @@ const Header = () => {
             justify-content: flex-end;
           }
           .link {
-            color: var(--light-tint));
+            color: var(--light-tint);
             font-size: 1rem;
             font-weight: 900;
             padding: 5px 15px;

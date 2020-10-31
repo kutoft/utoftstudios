@@ -10,7 +10,7 @@ const Switch = ({ label, initialState = false, handleClick, children }) => {
   return (
     <>
       <label className="switch">
-        <input type="checkbox" onClick={handleChecked} checked={isChecked} />
+        <input type="checkbox" onChange={handleChecked} checked={isChecked} />
         <span className="slider round"></span>
       </label>
       {label && <span className="label">{label}</span>}

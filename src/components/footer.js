@@ -84,7 +84,9 @@ const Footer = () => {
             align-items: center;
             flex-direction: row;
             justify-content: center;
-            background-color: var(--dark-primary);
+            background-color: ${colorMode === 'light'
+              ? 'var(--dark-primary)'
+              : 'var(--dark-shade)'};
           }
           .space-between {
             width: 100%;

@@ -126,6 +126,7 @@ const Button = ({ label, className, handleClick, options, children }) => {
             align-self: center;
             text-align: center;
             border-width: 1px;
+            border-radius: 4px;
             text-transform: uppercase;
           }
         `}
