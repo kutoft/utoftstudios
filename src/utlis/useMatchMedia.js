@@ -22,8 +22,10 @@ function useMatchMedia(initialState, query) {
 
     window.matchMedia(query).addEventListener('change', (ev) => {
       if (ev.matches) {
-        setState('dark')
+        setState(true)
+        return
       }
+      setState(false)
     })
 
     return () => window.matchMedia(query).removeEventListener('change')

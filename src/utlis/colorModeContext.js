@@ -6,15 +6,18 @@ ColorModeContext.displayName = 'ColorModeContext'
 
 const getInitialColorMode = () => {
   if (typeof window !== 'undefined') {
-    return window.localStorage.getItem('utoft_colorMode') || 'light'
+    return window.localStorage.getItem('utoft_colorMode') ? true : false
   }
-  return 'light'
+  return false
 }
 
 const ColorModeProvider = (props) => {
-  const { state: colorMode, setState: setColorMode } = useMatchMedia(
+  const { state: isDarkMode } = useMatchMedia(
     getInitialColorMode,
     '(prefers-color-scheme: dark)'
+  )
+  const [colorMode, setColorMode] = React.useState(
+    isDarkMode ? 'dark' : 'light'
   )
 
   React.useEffect(() => {

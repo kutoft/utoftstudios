@@ -14,11 +14,11 @@
   "dependencies": {
     "@aws-amplify/ui-react": "^0.2.21",
     "aws-amplify": "3.3.3",
-    "next": "^9.3.1",
+    "next": "^10.0.0",
     "next-pwa": "^3.1.5",
     "prop-types": "15.7.2",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "prettier": "^2.1.2"

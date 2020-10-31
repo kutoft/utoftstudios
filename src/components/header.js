@@ -14,7 +14,12 @@ const Header = () => {
           <div className="container2">
             <Link href="/">
               <a>
-                <img src="/static/utoft_logo.png" className="thqImage image" />
+                <img
+                  src="/static/utoft_logo.png"
+                  className="thqImage image"
+                  width="140"
+                  height="50"
+                />
               </a>
             </Link>
           </div>

@@ -1,20 +1,49 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import Image from 'next/image'
 import { useColorMode } from '../utlis/colorModeContext'
+import useMatchMedia from '../utlis/useMatchMedia'
 
 const Thing = ({ src, name, date, description }) => {
   const [isOpen, setIsOpen] = React.useState(false)
+  const [thingSize, setThingSize] = React.useState(300)
   const { colorMode } = useColorMode()
+  const { state: isMobile, setState: setIsMobile } = useMatchMedia(
+    false,
+    '(max-width: 479px)'
+  )
+  const { state: isTablet, setState: setIsTablet } = useMatchMedia(
+    false,
+    '(min-width: 480px) and (max-width: 767px)'
+  )
+  const { state: isDesktop, setState: setIsDesktop } = useMatchMedia(
+    false,
+    '(min-width: 768px)'
+  )
 
   const handleClick = () => {
     setIsOpen((o) => !o)
   }
 
+  const thingRef = React.createRef()
+
+  React.useEffect(() => {
+    setThingSize(thingRef.current.offsetWidth)
+  }, [isOpen, isMobile, isTablet, isDesktop])
+
   return (
     <>
-      <div className="container" onClick={handleClick}>
-        <div className="container-image"></div>
+      <div ref={thingRef} className="container" onClick={handleClick}>
+        <div className="container-image">
+          <Image
+            src={src}
+            height={thingSize * 0.5625}
+            width={thingSize}
+            sizes={['(max-width: 479px) 450px', '(max-width: 767px) 750px']}
+            alt={name}
+          />
+        </div>
         <div className="container2">
           <h3 className="thqHeading3 text">{name}</h3>
           <span className="date">{date}</span>
@@ -51,8 +80,6 @@ const Thing = ({ src, name, date, description }) => {
           }
           .container-image {
             width: 100%;
-            height: 0;
-            padding-top: ${isOpen ? '56.25%' : '100px'};
             display: flex;
             overflow: hidden;
             border-radius: 4px;
@@ -61,10 +88,12 @@ const Thing = ({ src, name, date, description }) => {
             border-color: ${colorMode === 'light'
               ? 'var(--light-shade)'
               : 'var(--dark-shade)'};
-            background-image: url(${src});
             background-position: center center;
             background-repeat: no-repeat;
             background-size: ${isOpen ? 'contain' : 'cover'};
+          }
+          .container-image :global(img) {
+            object-fit: ${isOpen ? 'contain' : 'cover'};
           }
           .image {
             max-width: 100%;

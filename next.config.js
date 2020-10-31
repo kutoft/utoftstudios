@@ -5,4 +5,9 @@ module.exports = withPWA({
   pwa: {
     dest: 'public',
   },
+  images: {
+    domains: [
+      'utoftstudiosa23d31d64fee45d6bf901629fbfed402203640-dev.s3.amazonaws.com',
+    ],
+  },
 })
