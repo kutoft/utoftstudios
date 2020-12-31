@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import { AmplifySignIn, AmplifyAuthenticator } from '@aws-amplify/ui-react'
-import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components'
+import { AuthState } from '@aws-amplify/ui-components'
 
 import Header from '../components/header'
 import Footer from '../components/footer'
