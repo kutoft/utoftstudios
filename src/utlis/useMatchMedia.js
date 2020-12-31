@@ -20,15 +20,18 @@ function useMatchMedia(initialState, query) {
       throw new Error('Must pass a media query')
     }
 
-    window.matchMedia(query).addEventListener('change', (ev) => {
+    const eventListener = (ev) => {
       if (ev.matches) {
         setState(true)
         return
       }
       setState(false)
-    })
+    }
 
-    return () => window.matchMedia(query).removeEventListener('change')
+    window.matchMedia(query).addEventListener('change', eventListener)
+
+    return () =>
+      window.matchMedia(query).removeEventListener('change', eventListener)
   }, [query])
 
   return { state, setState }

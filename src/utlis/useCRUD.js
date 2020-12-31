@@ -3,6 +3,7 @@ import { API, graphqlOperation, Storage } from 'aws-amplify'
 
 import useAsync from './useAsync'
 import useSafeDispatch from './useSafeDispatch'
+import uploadFile from './uploadFile'
 
 const defaultInitialState = {
   type: 'edit',
@@ -102,6 +103,28 @@ function useCRUD(objectStructure = {}, initialMethods = defaultMethods) {
     if (!data) run(API.graphql(graphqlOperation(methods.list)))
   }, [data])
 
+  const asyncUploadFile = async (myState) => {
+    try {
+      const { image } = await uploadFile(myState.fields.src)
+      if (image) {
+        safeSetState({
+          fields: {
+            ...myState.fields,
+            src: image,
+          },
+        })
+      }
+    } catch (err) {
+      console.log('Upload Error')
+      safeSetState({
+        fields: {
+          ...myState.fields,
+          src: image,
+        },
+      })
+    }
+  }
+
   // CRUD EFFECTS
   React.useEffect(() => {
     let myState = { ...state }
@@ -110,23 +133,24 @@ function useCRUD(objectStructure = {}, initialMethods = defaultMethods) {
     if (myState.type === 'save') {
       // AN IMAGE NEEDS TO BE UPLOADED
       if (typeof myState.fields.src === 'object') {
-        Storage.put(myState.fields.src.name, myState.fields.src, {
-          level: 'public',
-        })
-          .then((result) => {
-            Storage.get(result.key)
-              .then((result) => {
-                const imagePath = result.split('?')
-                safeSetState({
-                  fields: {
-                    ...myState.fields,
-                    src: imagePath[0],
-                  },
-                })
-              })
-              .catch((err) => console.log(err))
-          })
-          .catch((err) => console.log(err))
+        asyncUploadFile(myState)
+        // Storage.put(myState.fields.src.name, myState.fields.src, {
+        //   level: 'public',
+        // })
+        //   .then((result) => {
+        //     Storage.get(result.key)
+        //       .then((result) => {
+        //         const imagePath = result.split('?')
+        //         safeSetState({
+        //           fields: {
+        //             ...myState.fields,
+        //             src: imagePath[0],
+        //           },
+        //         })
+        //       })
+        //       .catch((err) => console.log(err))
+        //   })
+        //   .catch((err) => console.log(err))
       }
 
       // CREATE
@@ -149,10 +173,10 @@ function useCRUD(objectStructure = {}, initialMethods = defaultMethods) {
           })
       }
       // UPDATE
-      if (
-        myState.method === 'update' &&
-        typeof myState.fields.src !== 'object'
-      ) {
+      if (myState.method === 'update') {
+        if (typeof myState.fields.src === 'object') {
+          asyncUploadFile(myState)
+        }
         API.graphql(
           graphqlOperation(methods.update, {
             input: myState.fields,

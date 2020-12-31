@@ -37,7 +37,7 @@ const Thing = ({ src, name, date, description }) => {
       <div ref={thingRef} className="container" onClick={handleClick}>
         <div className="container-image">
           <Image
-            src={src}
+            src={`${src.split('upload/')[1]}`}
             height={thingSize * 0.5625}
             width={thingSize}
             sizes={['(max-width: 479px) 450px', '(max-width: 767px) 750px']}
@@ -80,7 +80,6 @@ const Thing = ({ src, name, date, description }) => {
           }
           .container-image {
             width: 100%;
-            display: flex;
             overflow: hidden;
             border-radius: 4px;
             background-color: inherit;

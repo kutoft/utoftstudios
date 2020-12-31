@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import Image from 'next/image'
 import Button from './button'
 import { useColorMode } from '../utlis/colorModeContext'
 
@@ -14,6 +15,8 @@ const DragItem = ({
 }) => {
   const { colorMode } = useColorMode()
 
+  const imageSize = 50
+
   return (
     <>
       <div className="drag-item container" draggable={draggable} id={item.id}>
@@ -25,7 +28,16 @@ const DragItem = ({
             </svg>
           </div>
         )}
-        {src && <div className="container-image"></div>}
+        {src && (
+          <div className="container-image">
+            <Image
+              src={`${src.split('upload/')[1]}`}
+              height={imageSize}
+              width={imageSize}
+              alt={heading ? heading : item.value}
+            />
+          </div>
+        )}
         <div className="container-text">
           <h4 className="thqHeading4 text">{heading ? heading : item.value}</h4>
         </div>
@@ -86,27 +98,22 @@ const DragItem = ({
             padding: 1px;
           }
           .container-image {
-            width: 50px;
-            height: 50px;
+            width: ${imageSize}px;
+            height: ${imageSize}px;
             flex-shrink: 0;
-            margin: 0 10px;
             overflow: hidden;
-            border-radius: 50%;
+            border-radius: ${imageSize}px;
             background-color: rgba(120, 120, 120, 0.4);
             border: 1px solid;
             border-color: ${colorMode === 'light'
               ? 'var(--light-shade)'
               : 'var(--dark-shade)'};
-            background-image: url(${src});
             background-position: center center;
+            background-repeat: no-repeat;
             background-size: cover;
           }
-          .image {
-            height: 50px;
-            min-width: 100%;
-            align-self: stretch;
+          .container-image :global(img) {
             object-fit: cover;
-            object-position: center;
           }
           .container-text {
             display: flex;
